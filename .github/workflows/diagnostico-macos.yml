@@ -1,0 +1,29 @@
+﻿name: Diagnostico macOS Madeira
+
+on:
+  workflow_dispatch:
+
+jobs:
+  diagnostico:
+    runs-on: macos-15
+
+    steps:
+      - name: Verificar ambiente
+        shell: bash
+        run: |
+          echo "=== SISTEMA ==="
+          sw_vers
+
+          echo "=== XCODE ==="
+          xcodebuild -version
+
+          echo "=== SDK IPHONEOS ==="
+          xcrun --sdk iphoneos --show-sdk-version
+
+          echo "=== XCODE INSTALADOS ==="
+          ls -d /Applications/Xcode*.app 2>/dev/null || true
+
+          echo "=== FERRAMENTAS ==="
+          clang --version
+          cmake --version
+          ninja --version || true
