@@ -8,6 +8,13 @@ jobs:
     runs-on: macos-15
 
     steps:
+      - name: Selecionar Xcode 26.3
+        shell: bash
+        run: |
+          sudo xcode-select -s /Applications/Xcode_26.3.app/Contents/Developer
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+
       - name: Verificar ambiente
         shell: bash
         run: |
@@ -27,3 +34,4 @@ jobs:
           clang --version
           cmake --version
           ninja --version || true
+
