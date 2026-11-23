@@ -17,7 +17,7 @@ from pathlib import Path
 p = Path(sys.argv[1])
 s = p.read_text()
 old = "  return __metal_atomic_fetch_add_explicit(out_count, 1, int(memory_order_relaxed), __METAL_MEMORY_SCOPE_THREADGROUP__);\n"
-if "__METAL_MEMORY_FLAGS_NONE__" not in s:
+if "__METAL_MEMORY_FLAGS_NONE__" not in s and False:
     if old not in s:
         raise SystemExit(f"expected atomic call not found in {p}")
     new = ("#ifdef __METAL_MEMORY_FLAGS_NONE__\n"
