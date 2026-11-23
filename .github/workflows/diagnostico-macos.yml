@@ -35,3 +35,12 @@ jobs:
           cmake --version
           ninja --version || true
 
+      - name: Baixar codigo do repositorio
+        uses: actions/checkout@v4
+
+      - name: Testar compatibilidade rusage
+        shell: bash
+        run: |
+          python3 tests/host/check-rusage-sdk.py
+
+
