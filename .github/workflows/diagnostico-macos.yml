@@ -1,4 +1,4 @@
-﻿name: Diagnostico macOS Madeira
+name: Diagnostico macOS Madeira
 
 on:
   workflow_dispatch:
@@ -41,6 +41,4 @@ jobs:
       - name: Testar compatibilidade rusage
         shell: bash
         run: |
-          python3 tests/host/check-rusage-sdk.py
-
-
+          CC=clang python3 tests/host/check-rusage-sdk.py
